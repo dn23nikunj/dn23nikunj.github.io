@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nikunj Doshi — Director | Tech Consultant | Community Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF8C00;
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --deep: #0A0705;
+    --deep2: #120E08;
+    --surface: #1A1410;
+    --surface2: #231C14;
+    --maroon: #6B1A1A;
+    --cream: #F5EDD8;
+    --muted: #8A7A60;
+    --border: rgba(201,168,76,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: linear-gradient(to bottom, rgba(10,7,5,0.95), transparent);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 100%, rgba(107,26,26,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 50%, rgba(255,140,0,0.06) 0%, transparent 60%);
+  }
+
+  .mandala {
+    position: absolute;
+    width: 700px; height: 700px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.04;
+    animation: rotateMandala 120s linear infinite;
+  }
+
+  @keyframes rotateMandala {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--saffron);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+
+  .hero-name span {
+    background: linear-gradient(135deg, var(--gold-light), var(--saffron), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-tagline {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 3rem;
+    animation: fadeUp 1s 0.45s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .stat {
+    text-align: center;
+    position: relative;
+  }
+  .stat::after {
+    content: '';
+    position: absolute;
+    right: -1.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 2rem;
+    background: var(--border);
+  }
+  .stat:last-child::after { display: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    padding: 7rem 2rem;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--saffron);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: var(--cream);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-bottom: 3rem;
+  }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--deep2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-left { position: relative; }
+
+  .portrait-frame {
+    position: relative;
+    display: inline-block;
+  }
+
+  .portrait-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+  }
+
+  .portrait-svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .frame-corner {
+    position: absolute;
+    width: 20px; height: 20px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .fc-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .fc-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+  .fc-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+  .fc-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+  .about-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 100px; height: 100px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.2rem;
+  }
+  .about-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .about-badge-txt {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: rgba(245,237,216,0.75);
+    margin-bottom: 1.5rem;
+    line-height: 1.85;
+  }
+
+  .about-text p strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: rgba(201,168,76,0.04);
+    transition: all 0.3s;
+  }
+  .tag:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+  }
+
+  /* ─── EXPERTISE ─── */
+  .expertise { background: var(--deep); }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--deep2);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--saffron));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover::before { transform: scaleX(1); }
+  .card:hover { background: var(--surface2); }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+  }
+  .card-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── EDUCATION ─── */
+  .education { background: var(--deep2); }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.4rem;
+    top: 0.3rem;
+    width: 10px; height: 10px;
+    border: 1px solid var(--gold);
+    background: var(--deep2);
+    transform: rotate(45deg);
+  }
+
+  .timeline-year {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-sub {
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .fellowship-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .fellowship-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .fellowship-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), var(--saffron));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .fellowship-card:hover::after { transform: scaleX(1); }
+  .fellowship-card:hover { border-color: rgba(201,168,76,0.4); }
+
+  .fellowship-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+  .fellowship-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+  .fellowship-org {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── COMMUNITY ─── */
+  .community { background: var(--deep); }
+
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .community-col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .community-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .community-list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .community-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.4rem;
+    top: 0.4rem;
+  }
+
+  /* ─── AMBASSADORS ─── */
+  .ambassadors { background: var(--deep2); }
+
+  .ambassador-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .ambassador-item {
+    background: var(--deep);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .ambassador-item:hover { background: var(--surface); }
+  .ambassador-item-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .ambassador-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .ambassador-item-sub {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── AWARDS ─── */
+  .awards { background: var(--deep); }
+
+  .awards-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .award-tile {
+    background: var(--deep2);
+    padding: 1.8rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .award-tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .award-tile:hover::before { opacity: 1; }
+  .award-tile:hover { background: var(--surface2); }
+
+  .award-icon { font-size: 1.6rem; }
+  .award-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+  .award-from {
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── CERTIFICATIONS ─── */
+  .certifications { background: var(--deep2); }
+
+  .cert-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .cert-badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border);
+    color: var(--cream);
+    background: var(--surface);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-badge::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--gold), var(--saffron));
+  }
+  .cert-badge:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: var(--surface2);
+    color: var(--gold-light);
+  }
+
+  /* ─── IMPACT ─── */
+  .impact { background: var(--deep); }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .impact-item {
+    background: var(--deep2);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .impact-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--gold-light), var(--saffron));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .impact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep2);
+    border-top: 1px solid var(--border);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .footer-location {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .footer-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+  }
+
+  .footer-motto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--saffron);
+  }
+
+  .footer-copy {
+    margin-top: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(138,122,96,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── DIVIDER ORNAMENT ─── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    opacity: 0.3;
+    font-size: 1.2rem;
+    letter-spacing: 1rem;
+    margin: 1rem 0 3rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .fellowship-grid { grid-template-columns: 1fr 1fr; }
+    .community-grid { grid-template-columns: 1fr; }
+    .ambassador-banner { grid-template-columns: 1fr; }
+    .awards-mosaic { grid-template-columns: repeat(2, 1fr); }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── QUOTE BLOCK ─── */
+  .quote-block {
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    background: rgba(201,168,76,0.04);
+  }
+  .quote-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+  .quote-attr {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 1rem;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">Nikunj Doshi</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#awards">Recognition</a></li>
+    <li><a href="#impact">Impact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Mandala SVG -->
+  <svg class="mandala" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="195" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="170" stroke="#C9A84C" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="140" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="110" stroke="#C9A84C" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="80" stroke="#C9A84C" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="50" stroke="#C9A84C" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="20" stroke="#C9A84C" stroke-width="0.5"/>
+    <g stroke="#C9A84C" stroke-width="0.4">
+      <line x1="200" y1="5" x2="200" y2="395"/>
+      <line x1="5" y1="200" x2="395" y2="200"/>
+      <line x1="62" y1="62" x2="338" y2="338"/>
+      <line x1="338" y1="62" x2="62" y2="338"/>
+      <line x1="130" y1="10" x2="70" y2="390"/>
+      <line x1="270" y1="10" x2="330" y2="390"/>
+      <line x1="10" y1="130" x2="390" y2="70"/>
+      <line x1="10" y1="270" x2="390" y2="330"/>
+    </g>
+    <polygon points="200,60 215,185 340,200 215,215 200,340 185,215 60,200 185,185" stroke="#C9A84C" stroke-width="0.5" fill="none"/>
+    <polygon points="200,100 212,188 300,200 212,212 200,300 188,212 100,200 188,188" stroke="#C9A84C" stroke-width="0.3" fill="none"/>
+  </svg>
+
+  <div class="hero-eyebrow">Boston, Massachusetts · USA</div>
+
+  <h1 class="hero-name"><span>Nikunj Doshi</span></h1>
+  <p class="hero-title">Director · Tech Consultant · Entrepreneur · Community Leader</p>
+  <p class="hero-tagline">Dil se always Bhartiya Hindustani</p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">5000+</span>
+      <span class="stat-label">Students Guided</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1500+</span>
+      <span class="stat-label">1-on-1 Sessions</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">10+</span>
+      <span class="stat-label">Certifications</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">Trees Planted</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">
+            <svg class="portrait-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="35" r="22" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M10 110 C10 80 90 80 90 110" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span>Nikunj Doshi</span>
+          </div>
+          <div class="frame-corner fc-tl"></div>
+          <div class="frame-corner fc-tr"></div>
+          <div class="frame-corner fc-bl"></div>
+          <div class="frame-corner fc-br"></div>
+          <div class="about-badge">
+            <span class="about-badge-num">15+</span>
+            <span class="about-badge-txt">Years of Impact</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">A Visionary Bridging <em>Two Worlds</em></h2>
+        <div class="gold-line"></div>
+        <p>
+          Nikunj Doshi is a <strong>Director at Abroad Aashaye</strong> — an educational consulting firm empowering Indian students to navigate global study programs. As Director of North America, he has built one of the most trusted support networks for Indians arriving in the United States.
+        </p>
+        <p>
+          A rare blend of <strong>technical mastery and human-centered leadership</strong>, Nikunj has guided over 5,000 students through every facet of settling in America — from paperwork and housing to cultural belonging and career growth.
+        </p>
+        <p>
+          Deeply rooted in Indian heritage while thriving as a Boston community pillar, he embodies the best of both worlds: a <strong>DevOps engineer, AI researcher, ambassador, mentor, and seva-driven volunteer</strong> who measures success not by titles, but by the lives he touches.
+        </p>
+
+        <div class="quote-block">
+          <p>"Most of the Indians always miss their homes outside the country — I have made it my mission to foster communities where they can celebrate festivals with joy and ecstasy."</p>
+          <span class="quote-attr">— Nikunj Doshi</span>
+        </div>
+
+        <div class="about-tags">
+          <span class="tag">DevOps Engineer</span>
+          <span class="tag">AI Researcher</span>
+          <span class="tag">Global Ambassador</span>
+          <span class="tag">Mentor</span>
+          <span class="tag">Community Builder</span>
+          <span class="tag">Entrepreneur</span>
+          <span class="tag">Social Influencer</span>
+          <span class="tag">Public Speaker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERTISE ─── -->
+<section class="expertise" id="expertise">
+  <div class="container">
+    <div class="section-label reveal">What I Do</div>
+    <h2 class="section-title reveal">Areas of <em>Expertise</em></h2>
+
+    <div class="cards-grid reveal">
+      <div class="card">
+        <span class="card-icon">⚙️</span>
+        <div class="card-title">DevOps & Cloud Engineering</div>
+        <p class="card-desc">Expert in CI/CD pipelines, containerization with Docker & Kubernetes, and multi-cloud platforms including AWS, Azure, Google Cloud, and Alibaba Cloud.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤖</span>
+        <div class="card-title">Artificial Intelligence & Policy</div>
+        <p class="card-desc">AI Fellow at Center for AI & Digital Policy. Worked on AI governance, model benchmarking, and policy refinement contributing to the India AI Impact Summit 2025.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎓</span>
+        <div class="card-title">Educational Consulting</div>
+        <p class="card-desc">Director of North America at Abroad Aashaye. Over 5,000 Indian students guided through US educational journeys with 1,500+ one-on-one consultations.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔐</span>
+        <div class="card-title">Cyber Security & Research</div>
+        <p class="card-desc">Active researcher and Publicity Chair for IEEE Conference. Mentors students through the Massachusetts Cyber Hub program — recognized by the Governor of Massachusetts.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌐</span>
+        <div class="card-title">Community Leadership</div>
+        <p class="card-desc">E-board member across FIA-NE, IAGB, UAINE, and Milan Cultural Committee. Leads strategic planning, event management, and Indo-American cultural initiatives.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📢</span>
+        <div class="card-title">Mentorship & Advocacy</div>
+        <p class="card-desc">Social media influencer, public speaker, and mentor to immigrants navigating the US ecosystem — covering career, culture, compliance, and community integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EDUCATION ─── -->
+<section class="education" id="education">
+  <div class="container">
+    <div class="section-label reveal">Academics</div>
+    <h2 class="section-title reveal">Education & <em>Fellowships</em></h2>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Northeastern University · Boston, MA</div>
+        <div class="timeline-title">Double Master's Degree</div>
+        <div class="timeline-sub">MS in Computer Science &nbsp;|&nbsp; MBA in IT Project Management</div>
+        <p class="timeline-desc">
+          Achieved Huntington 100 Award — bestowed upon the top 100 students among 50,000+ at Northeastern University. Served as E-Board Secretary of <em>NU Sanskriti</em>, the Indian cultural organization, hosting landmark events for 20,000+ students annually.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Research & Academic Contributions</div>
+        <div class="timeline-title">IEEE, Peer Review & Hackathons</div>
+        <div class="timeline-sub">Publicity Chair · Peer Reviewer · Hackathon Judge</div>
+        <p class="timeline-desc">
+          Reviewed 5+ peer-reviewed journals and judged numerous hackathons. Actively working on research papers spanning AI, Cyber Security, and Quantum Computing.
+        </p>
+      </div>
+    </div>
+
+    <div class="ornament reveal">✦ ✦ ✦</div>
+
+    <div class="section-label reveal">Fellowships</div>
+    <div class="fellowship-grid reveal">
+      <div class="fellowship-card">
+        <div class="fellowship-icon">🏛️</div>
+        <div class="fellowship-name">AI Fellowship 2025</div>
+        <div class="fellowship-org">Center for AI & Digital Policy · 1 in 1,00,000</div>
+      </div>
+      <div class="fellowship-card">
+        <div class="fellowship-icon">🎓</div>
+        <div class="fellowship-name">Harvard Business School Fellowship</div>
+        <div class="fellowship-org">Aspire Institute · Top 250 Globally</div>
+      </div>
+      <div class="fellowship-card">
+        <div class="fellowship-icon">💼</div>
+        <div class="fellowship-name">McKinsey Forward Fellowship</div>
+        <div class="fellowship-org">McKinsey & Company</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMMUNITY ─── -->
+<section class="community" id="community">
+  <div class="container">
+    <div class="section-label reveal">Seva & Volunteerism</div>
+    <h2 class="section-title reveal">Community <em>Roots</em></h2>
+    <p class="reveal" style="color:var(--muted); margin-bottom: 3rem; max-width: 650px; font-size:0.9rem; line-height:1.85;">
+      From weekly temple seva to statewide cultural events, Nikunj's service spans every corner of the Indian-American community in New England — and beyond.
+    </p>
+
+    <div class="community-grid reveal">
+      <div class="community-col">
+        <h3>Indo-American Organizations</h3>
+        <ul class="community-list">
+          <li>Foundation of Indian Americans New England (FIA-NE)</li>
+          <li>Indian Americans of Greater Boston (IAGB)</li>
+          <li>United Association of New England (UAINE)</li>
+          <li>Milan Cultural Committee</li>
+          <li>Hindu Swayam Sevak Sangh — Yuva Shaka</li>
+          <li>US Hindu Cultural Council</li>
+        </ul>
+      </div>
+
+      <div class="community-col">
+        <h3>Spiritual Centers & Temples</h3>
+        <ul class="community-list">
+          <li>BAPS — Lowell Temple</li>
+          <li>Shivalaya Temple of Greater Boston</li>
+          <li>VYO Shrinathji Haveli — Lowell</li>
+          <li>ISKCON Boston</li>
+          <li>Braj Mandir, Holbrook</li>
+          <li>Art of Living</li>
+          <li>Hari Prabodham Swaminarayan Sanstha</li>
+          <li>SMVS Swaminarayan Sanstha of Greater Boston</li>
+          <li>BAPS Robbinsville Temple</li>
+          <li>Satsang Center — Woburn, MA</li>
+          <li>OMHCC Temple by VHPA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-block reveal" style="margin-top:3rem;">
+      <p>"This seva might not be something to be boastful about — rather I am grateful for the opportunities that left a big impact on the community."</p>
+      <span class="quote-attr">— Nikunj Doshi on Volunteering</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AMBASSADORS ─── -->
+<section class="ambassadors" id="ambassadors">
+  <div class="container">
+    <div class="section-label reveal">Global Reach</div>
+    <h2 class="section-title reveal">Ambassador <em>Roles</em></h2>
+
+    <div class="ambassador-banner reveal">
+      <div class="ambassador-item">
+        <div class="ambassador-item-icon">🌍</div>
+        <div class="ambassador-item-title">CD Foundation Ambassador</div>
+        <div class="ambassador-item-sub">Top 15 of 200+ Countries · Continuous Delivery</div>
+      </div>
+      <div class="ambassador-item">
+        <div class="ambassador-item-icon">⚡</div>
+        <div class="ambassador-item-title">DASA DevOps Ambassador</div>
+        <div class="ambassador-item-sub">DevOps Agile Skills Association</div>
+      </div>
+      <div class="ambassador-item">
+        <div class="ambassador-item-icon">🔴</div>
+        <div class="ambassador-item-title">Former Red Hat Ambassador</div>
+        <div class="ambassador-item-sub">Open Source · Enterprise Linux</div>
+      </div>
+    </div>
+
+    <div class="section-label reveal" style="margin-top:3rem;">Distinguished Guests Welcomed</div>
+    <p class="reveal" style="color:var(--muted); margin-bottom: 2rem; font-size:0.85rem;">
+      Nikunj has had the honour of welcoming iconic personalities to Boston:
+    </p>
+    <div class="cert-strip reveal">
+      <span class="cert-badge">J. Sai Deepak Ji</span>
+      <span class="cert-badge">Smt. Smriti Irani Ji</span>
+      <span class="cert-badge">Sri Sri Ravi Shankar</span>
+      <span class="cert-badge">Smt. Nita Ambani Ji</span>
+      <span class="cert-badge">Kumar Mangal Birla</span>
+      <span class="cert-badge">Pujya Gyan Vatal Swami</span>
+      <span class="cert-badge">Geeta Rabari</span>
+      <span class="cert-badge">Kinjal Dave</span>
+      <span class="cert-badge">Atul Purohit</span>
+      <span class="cert-badge">Falguni Pathak</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AWARDS ─── -->
+<section class="awards" id="awards">
+  <div class="container">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="section-title reveal">Honours & <em>Awards</em></h2>
+
+    <div class="awards-mosaic reveal">
+      <div class="award-tile">
+        <div class="award-icon">🏆</div>
+        <div class="award-name">Huntington 100 Award</div>
+        <div class="award-from">Northeastern University · Top 100 of 50,000+</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🏙️</div>
+        <div class="award-name">Good Neighbor Certificate</div>
+        <div class="award-from">Mayor Michele Wu · City of Boston</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🤖</div>
+        <div class="award-name">AI Fellowship 2025</div>
+        <div class="award-from">Center for AI & Digital Policy</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🌿</div>
+        <div class="award-name">Latvia Presidential Appreciation</div>
+        <div class="award-from">President Edgars Rinkēvičs · Republic of Latvia</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🎓</div>
+        <div class="award-name">Harvard Business School Fellowship</div>
+        <div class="award-from">Aspire Institute · Top 250 Globally</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">💼</div>
+        <div class="award-name">McKinsey Forward Fellow</div>
+        <div class="award-from">McKinsey & Company</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🛡️</div>
+        <div class="award-name">MA Cyber Hub Recognition</div>
+        <div class="award-from">Governor of Massachusetts</div>
+      </div>
+      <div class="award-tile">
+        <div class="award-icon">🌟</div>
+        <div class="award-name">Mayoral Citations</div>
+        <div class="award-from">Nashua · Woburn · Lowell · Boston</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─── -->
+<section class="certifications">
+  <div class="container">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="section-title reveal">10+ Industry <em>Certifications</em></h2>
+    <div class="cert-strip reveal">
+      <span class="cert-badge">☁️ AWS</span>
+      <span class="cert-badge">🔵 Microsoft Azure</span>
+      <span class="cert-badge">🔔 PagerDuty</span>
+      <span class="cert-badge">🟢 Google Cloud</span>
+      <span class="cert-badge">🟠 Alibaba Cloud</span>
+      <span class="cert-badge">📊 Tableau</span>
+      <span class="cert-badge">🔴 Red Hat</span>
+      <span class="cert-badge">+ Many More</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMPACT ─── -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="section-label reveal">By the Numbers</div>
+    <h2 class="section-title reveal">The <em>Impact</em></h2>
+
+    <div class="impact-grid reveal">
+      <div class="impact-item">
+        <span class="impact-num">5,000+</span>
+        <span class="impact-label">Students Guided to USA</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-num">12,000+</span>
+        <span class="impact-label">COVID Relief Kits Distributed</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-num">500+</span>
+        <span class="impact-label">Trees Planted</span>
+      </div>
+      <div class="impact-item">
+        <span class="impact-num">20,000+</span>
+        <span class="impact-label">Students at Cultural Events</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-name">Nikunj Doshi</div>
+  <div class="footer-tagline">Director · Tech Consultant · Entrepreneur · Community Leader</div>
+  <div class="footer-location">📍 Boston, Massachusetts · USA</div>
+  <div class="footer-divider"></div>
+  <div class="footer-motto">Bharat Mata Ki Jai &nbsp;·&nbsp; Jai Hind &nbsp;·&nbsp; Jai Jawan Jai Kisan</div>
+  <div class="footer-copy">© 2026 Nikunj Doshi · All Rights Reserved</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
